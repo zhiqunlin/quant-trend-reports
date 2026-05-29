@@ -3,24 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quant Trend Reports</title>
+<title>Quant Trend Reports · 量化趋势交易报告集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#0f1923;color:#e0e0e0}
-.container{max-width:900px;margin:0 auto;padding:40px 20px}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#0f1923;color:#c9d1d9;line-height:1.6}
+.container{max-width:920px;margin:0 auto;padding:40px 20px}
 .header{text-align:center;margin-bottom:40px}
-.header h1{font-size:28px;background:linear-gradient(135deg,#00d2ff,#3a7bd5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.header p{color:#888;font-size:14px;margin-top:6px}
-.footer{text-align:center;color:#555;font-size:12px;padding:30px;margin-top:40px}
+.header h1{font-size:28px;background:linear-gradient(135deg,#00d2ff,#3a7bd5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#8b949e;font-size:14px}
+.report-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.report{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:18px;text-decoration:none;color:inherit;display:block;transition:border-color .15s,transform .15s}
+.report:hover{border-color:#30363d;transform:translateY(-2px)}
+.report .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.report .code{font-size:12px;color:#8b949e;margin-bottom:2px}
+.report .name{font-size:17px;font-weight:700;color:#f0f6fc}
+.report .status{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.report .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.report .kpi-item{background:#0d1117;border-radius:6px;padding:6px 8px}
+.report .kpi-label{font-size:10px;color:#8b949e;margin-bottom:2px}
+.report .kpi-value{font-size:13px;font-weight:600;color:#f0f6fc}
+.report .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.report .meta span{background:#0d1117;padding:2px 8px;border-radius:4px;font-size:11px;color:#8b949e}
+.report .alerts{font-size:11px;color:#d2991d;margin-bottom:6px}
+.report .date{font-size:11px;color:#484f58;margin-bottom:8px}
+.report .link-btn{display:inline-block;font-size:12px;padding:4px 12px;border-radius:6px;background:#1f6feb;color:#fff;text-decoration:none;margin-top:4px}
+.footer{text-align:center;color:#484f58;font-size:12px;padding:40px;margin-top:40px;border-top:1px solid #21262d}
+@media(max-width:600px){.report-list{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
 <h1>Quant Trend Reports</h1>
-<p>量化趋势交易系统 · 完整推演报告集</p>
+<p>量化趋势交易系统 · 完整推演报告集 · Agent 8 V3.6</p>
 </div>
-<div class="footer"><p>Agent 8 · Quant Trend System V3.4 · 不构成投资建议</p></div>
+<div class="report-list">
+</div>
+<div class="footer">
+<p>Quant Trend System V3.4 · 基于《量化趋势交易系统完整操作手册》· ⚠️ 不构成投资建议</p>
+</div>
 </div>
 </body>
 </html>
