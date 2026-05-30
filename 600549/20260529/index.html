@@ -109,10 +109,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 <canvas id="chartPeriodCompare"></canvas>
 </div>
 
-<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比（V4.7）</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>周期标签</th><th>交易模式</th><th>vs统一</th></tr></thead><tbody><tr><td>超短(3日)</td><td>+5.45%</td><td>40→48</td><td>-0.67→+0.03</td><td style="font-weight:700">+50</td><td><span class="label-a">强趋势多头</span></td><td>突破追涨</td><td class="cycle-diverge">分歧</td></tr>
-<tr><td>短线(5日)</td><td>+4.76%</td><td>39→48</td><td>-1.32→+0.03</td><td style="font-weight:700">+40</td><td><span class="label-a">强趋势多头</span></td><td>突破追涨/回踩</td><td class="cycle-diverge">分歧</td></tr>
-<tr><td>波段(10日)</td><td>+1.70%</td><td>39→48</td><td>-1.38→+0.03</td><td style="font-weight:700">+30</td><td><span class="label-a">强趋势多头</span></td><td>回踩/趋势延续</td><td class="cycle-diverge">分歧</td></tr>
-<tr><td>中线(15日)</td><td>-8.50%</td><td>50→48</td><td>-0.23→+0.03</td><td style="font-weight:700">-30</td><td><span class="label-g">强趋势空头</span></td><td>回避</td><td class="cycle-diverge">分歧</td></tr></tbody></table><div class="cycle-divergence">⚠️ 多周期趋势分歧：4个周期与统一标签不一致，对应周期仓位上限 × 0.7</div></div>
+<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比（V4.7）</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>周期标签</th><th>交易模式</th><th>vs统一</th></tr></thead><tbody><tr><td>超短(3日)</td><td>+5.45%</td><td>40->48</td><td>-0.67->+0.03</td><td style="font-weight:700">+50</td><td><span class="label-a">强趋势多头</span></td><td>突破追涨</td><td class="cycle-diverge">分歧</td></tr>
+<tr><td>短线(5日)</td><td>+4.76%</td><td>39->48</td><td>-1.32->+0.03</td><td style="font-weight:700">+40</td><td><span class="label-a">强趋势多头</span></td><td>突破追涨/回踩</td><td class="cycle-diverge">分歧</td></tr>
+<tr><td>波段(10日)</td><td>+1.70%</td><td>39->48</td><td>-1.38->+0.03</td><td style="font-weight:700">+30</td><td><span class="label-a">强趋势多头</span></td><td>回踩/趋势延续</td><td class="cycle-diverge">分歧</td></tr>
+<tr><td>中线(15日)</td><td>-8.50%</td><td>50->48</td><td>-0.23->+0.03</td><td style="font-weight:700">-30</td><td><span class="label-g">强趋势空头</span></td><td>回避</td><td class="cycle-diverge">分歧</td></tr></tbody></table><div class="cycle-divergence">⚠️ 多周期趋势分歧：4个周期与统一标签不一致，对应周期仓位上限 × 0.7</div></div>
 
 </div>
 <div class="footer">
@@ -134,7 +134,7 @@ const chartData = {
     },
     stopLoss: {
         labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
-        values: [1, 1, 1, 0]
+        values: [1, 1, 1, 1]
     },
     periodCompare: {
         labels: ['超短(12%)', '短线(22%)', '波段(32%)', '中线(45%)'],
