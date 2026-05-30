@@ -67,7 +67,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 
 <div class="kpi-row">
 <div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#d9534f">-5</div><div class="label">/100 · 偏空</div></div>
-<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#3fb950">强</div><div class="label">3/4维满足</div></div>
+<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#d9534f">弱</div><div class="label">3/4维满足</div></div>
 <div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">1.6%</div><div class="label">短线</div></div>
 <div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">6.5%</div><div class="label">ATR14/Close</div></div>
 </div>
@@ -130,7 +130,7 @@ const chartData = {
     },
     position: {
         labels: ['超短', '短线', '波段', '中线'],
-        limits: [1.2, 2.2, 1.6, 4.5]
+        limits: [1.2, 2.2, 3.2, 4.5]
     },
     stopLoss: {
         labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
@@ -139,7 +139,7 @@ const chartData = {
     periodCompare: {
         labels: ['超短(12%)', '短线(22%)', '波段(32%)', '中线(45%)'],
         base: [12, 22, 32, 45],
-        actual: [1.2, 2.2, 1.6, 4.5]
+        actual: [1.2, 2.2, 3.2, 4.5]
     }
 };
 
