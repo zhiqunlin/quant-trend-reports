@@ -68,11 +68,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 <div class="kpi-row">
 <div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#d9534f">-70</div><div class="label">/100 · 偏空</div></div>
 <div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#484f58">无</div><div class="label">0/4维满足</div></div>
-<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">0.2%</div><div class="label">短线</div></div>
-<div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">3.7%</div><div class="label">ATR14/Close</div></div>
+<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">0%</div><div class="label">无</div></div>
+<div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">3.68%</div><div class="label">ATR14/Close</div></div>
 </div>
 
-
+<div class="warning-box">⚠️ 风险警示：极强空头信号(总分-70);完美空头排列;趋势闸门全触发;板块共振下跌;融资持续净偿还 | 乖离率 D20：-11.42%</div>
 
 <div class="grid-2">
 <div class="card">
@@ -95,11 +95,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 <div style="display:flex;flex-direction:column;gap:8px">
 <div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">突破追涨</div><div class="mode-status triggered">✅ 触发</div></div>
 <div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">回踩低吸</div><div class="mode-status triggered">✅ 触发</div></div>
-<div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">首阴低吸</div><div class="mode-status triggered">✅ 触发</div></div>
-<div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">趋势线突破</div><div class="mode-status triggered">✅ 触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">首阴低吸</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">趋势线突破</div><div class="mode-status not-triggered">○ 未触发</div></div>
 <div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">箱体高抛低吸</div><div class="mode-status triggered">✅ 触发</div></div>
-<div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">趋势延续</div><div class="mode-status triggered">✅ 触发</div></div>
-<div class="mode-card"><div class="indicator" style="background:#3fb950"></div><div class="mode-name">止跌确认观察</div><div class="mode-status triggered">✅ 触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">趋势延续</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">止跌确认观察</div><div class="mode-status not-triggered">○ 未触发</div></div>
 </div>
 </div>
 </div>
@@ -109,14 +109,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 <canvas id="chartPeriodCompare"></canvas>
 </div>
 
-<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比（V4.7）</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>趋势</th><th>交易模式</th><th>vs统一</th></tr></thead><tbody><tr><td>超短(3日)</td><td>-3.02%</td><td>29->28</td><td>-0.71->-0.95</td><td style="font-weight:700">-20</td><td><span class="label-f">弱趋势空头</span></td><td>超跌反弹</td><td class="cycle-diverge">分歧</td></tr>
-<tr><td>短线(5日)</td><td>-9.91%</td><td>40->28</td><td>-0.27->-0.95</td><td style="font-weight:700">-55</td><td><span class="label-g">强趋势空头</span></td><td>回避</td><td class="cycle-agree">一致</td></tr>
-<tr><td>波段(10日)</td><td>-13.88%</td><td>50->28</td><td>+0.04->-0.95</td><td style="font-weight:700">-55</td><td><span class="label-g">强趋势空头</span></td><td>回避</td><td class="cycle-agree">一致</td></tr>
-<tr><td>中线(15日)</td><td>-14.39%</td><td>51->28</td><td>+0.07->-0.95</td><td style="font-weight:700">-55</td><td><span class="label-g">强趋势空头</span></td><td>回避</td><td class="cycle-agree">一致</td></tr></tbody></table><div class="cycle-divergence" style="color:#d2991d;background:#d2991d10;border-color:#d2991d33">⚠️ 单周期分歧：1个周期与统一标签不一致，关注后续演变</div></div>
+<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比（V4.7）</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>趋势</th><th>交易模式</th><th>vs统一</th></tr></thead><tbody><tr><td></td><td>-3.02%</td><td></td><td></td><td style="font-weight:700">-20</td><td><span class="label-d"></span></td><td>超跌反弹博弈</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-9.91%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-13.88%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-14.38%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr></tbody></table><div class="cycle-divergence">⚠️ 多周期趋势分歧：4个周期与统一标签不一致，对应周期仓位上限 × 0.7</div></div>
 
 </div>
 <div class="footer">
-<p>Quant Trend System V4.7 · Agent 8 · 基于 SKILL.md 单一权威源</p>
+<p>Quant Trend System V4.9 · Agent 8 · 基于 SKILL.md 单一权威源</p>
 <p style="margin-top:4px"><a href="report.html">📄 MD 报告查看器</a> · <a href="安乃达_20260529_quant_trend.md">📝 Markdown 原文</a> · <a href="https://github.com/zhiqunlin/quant-trend-reports">GitHub 仓库</a></p>
 <p style="margin-top:8px;color:#d9534f">⚠️ 不构成投资建议 · 市场有风险，投资须谨慎</p>
 </div>
@@ -130,7 +130,7 @@ const chartData = {
     },
     position: {
         labels: ['超短', '短线', '波段', '中线'],
-        limits: [1.2, 2.2, 3.2, 4.5]
+        limits: [0.0, 0.0, 0.0, 0.0]
     },
     stopLoss: {
         labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
@@ -139,7 +139,7 @@ const chartData = {
     periodCompare: {
         labels: ['超短(12%)', '短线(22%)', '波段(32%)', '中线(45%)'],
         base: [12, 22, 32, 45],
-        actual: [1.2, 2.2, 3.2, 4.5]
+        actual: [0.0, 0.0, 0.0, 0.0]
     }
 };
 
