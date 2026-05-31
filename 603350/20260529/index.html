@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安乃达(603350) · 量化趋势推演</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:#0f1923;color:#c9d1d9;line-height:1.6}
+.nav{background:#161b22;border-bottom:1px solid #21262d;padding:10px 24px;display:flex;gap:16px;align-items:center;position:sticky;top:0;z-index:10}
+.nav a{color:#8b949e;text-decoration:none;font-size:.9em;padding:4px 12px;border-radius:6px;transition:all .15s}
+.nav a:hover{color:#f0f6fc;background:#21262d}
+.nav a.active{color:#58a6ff;background:#1f6feb22}
+.container{max-width:1000px;margin:0 auto;padding:24px}
+.header{text-align:center;margin-bottom:32px}
+.header h1{font-size:24px;color:#f0f6fc;margin-bottom:4px}
+.header .meta{color:#8b949e;font-size:13px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.card{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:20px}
+.card h3{font-size:14px;color:#8b949e;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.card canvas{max-height:280px}
+.kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.kpi{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:14px 18px;flex:1;min-width:140px;text-align:center}
+.kpi .value{font-size:28px;font-weight:700;margin:4px 0}
+.kpi .label{font-size:11px;color:#8b949e;text-transform:uppercase}
+
+.label-a{color:#00d2ff} .label-b{color:#3a7bd5} .label-c{color:#f0ad4e}
+.label-d{color:#888} .label-e{color:#d9534f} .label-f{color:#c9302c}
+.label-g{color:#a94442} .label-h{color:#5bc0de}
+
+.mode-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.mode-card .indicator{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.mode-card .mode-name{font-size:14px;font-weight:600;color:#f0f6fc}
+.mode-card .mode-status{font-size:11px;margin-left:auto}
+.triggered{color:#3fb950}
+.not-triggered{color:#484f58}
+.mode-card.primary{border-color:#1f6feb;background:#1f6feb0a}
+
+.warning-box{background:#d2991d15;border:1px solid #d2991d33;border-radius:8px;padding:12px 16px;margin-bottom:20px;color:#d2991d;font-size:13px}
+
+.footer{text-align:center;padding:40px 20px;color:#484f58;font-size:12px;border-top:1px solid #21262d;margin-top:40px}
+.footer a{color:#58a6ff;text-decoration:none}
+
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+.cycle-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.cycle-table th{background:#21262d;color:#8b949e;padding:8px 10px;text-align:center;font-weight:600}
+.cycle-table td{padding:8px 10px;text-align:center;border-bottom:1px solid #21262d}
+.cycle-table tr:hover td{background:#1f2428}
+.cycle-agree{color:#3fb950}.cycle-warn{color:#d2991d}.cycle-diverge{color:#d9534f}
+.cycle-divergence{background:#d9534f15;border:1px solid #d9534f33;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:#d9534f}
+.tc4-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.tc4-table th{background:#21262d;color:#8b949e;padding:6px 8px;text-align:center;font-weight:600}
+.tc4-table td{padding:6px 8px;text-align:center;border-bottom:1px solid #21262d}
+.tc4-table tr.current td{background:#1f6feb15;font-weight:700;color:#58a6ff}
+.tc4-table tr:hover td{background:#1f2428}
+.risk-panel{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.risk-light{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:10px 16px;text-align:center;min-width:100px;flex:1}
+.risk-light .rl-icon{font-size:20px;margin-bottom:4px}
+.risk-light .rl-label{font-size:11px;color:#8b949e}
+.risk-light .rl-status{font-size:12px;font-weight:600}
+.rl-safe{color:#3fb950}.rl-warn{color:#d2991d}.rl-danger{color:#d9534f}
+.resonance-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.res-col{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:12px 16px}
+.res-col h4{font-size:12px;color:#8b949e;margin-bottom:8px}
+.res-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+.res-row .val{font-weight:600}
+</style>
+</head>
+<body>
+<div class="nav">
+<a href="../">← 时间线</a>
+<a href="../../">🏠 索引</a>
+<a href="./" class="active">📊 可视化</a>
+<a href="report.html">📄 完整报告</a>
+</div>
+<div class="container">
+<div class="header">
+<h1>安乃达(603350) · 量化趋势推演</h1>
+<div class="meta">分析：2026-05-31 | 数据：2026-05-29（最近交易日） | 趋势标签：<span class="label-g">强趋势空头</span> | 总分：-75/100</div>
+</div>
+
+<div class="kpi-row">
+<div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#d9534f">-75</div><div class="label">/100 · 偏空</div></div>
+<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#484f58">无</div><div class="label">0/4维满足</div></div>
+<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">0%</div><div class="label">无</div></div>
+<div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">3.68%</div><div class="label">ATR14/Close</div></div>
+</div>
+
+<div class="warning-box">⚠️ 风险警示：极强空头(总分-75);完美空头排列;无量下跌;趋势闸门全触发;融资净偿还 | 乖离率 D20：-11.42%</div>
+
+<div class="grid-2">
+<div class="card">
+<h3>📊 五层量化评分</h3>
+<canvas id="chartLayers"></canvas>
+</div>
+<div class="card">
+<h3>📈 仓位三维上限</h3>
+<canvas id="chartPosition"></canvas>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card">
+<h3>🛡️ 止跌四维评估</h3>
+<canvas id="chartStopLoss"></canvas>
+</div>
+<div class="card">
+<h3>📋 交易模式触发状态</h3>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">突破追涨</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">回踩低吸</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">首阴低吸</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">趋势线突破</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">箱体高抛低吸</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">趋势延续</div><div class="mode-status not-triggered">○ 未触发</div></div>
+<div class="mode-card"><div class="indicator" style="background:#484f58"></div><div class="mode-name">止跌确认观察</div><div class="mode-status not-triggered">○ 未触发</div></div>
+</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h3>📊 各周期仓位对比</h3>
+<canvas id="chartPeriodCompare"></canvas>
+</div>
+
+<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比（V4.7）</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>趋势</th><th>交易模式</th><th>vs统一</th></tr></thead><tbody><tr><td></td><td>-3.02%</td><td></td><td></td><td style="font-weight:700">-20</td><td><span class="label-d"></span></td><td>超跌反弹博弈</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-9.91%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-13.88%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr>
+<tr><td></td><td>-14.38%</td><td></td><td></td><td style="font-weight:700">-55</td><td><span class="label-d"></span></td><td>回避</td><td class="cycle-diverge"></td></tr></tbody></table><div class="cycle-divergence">⚠️ 多周期趋势分歧：4个周期与统一标签不一致，对应周期仓位上限 × 0.7</div></div>
+
+<div class="card" style="margin-top:20px"><h3>🗺️ 标签×周期→交易模式 全量映射（当前行高亮）</h3><table class="tc4-table"><thead><tr><th>标签</th><th>超短</th><th>短线</th><th>波段</th><th>中线</th></tr></thead><tbody><tr><td style="font-weight:700">A</td><td>突破追涨</td><td>突破追涨/回踩</td><td>回踩/趋势延续</td><td>趋势延续</td></tr><tr><td style="font-weight:700">B</td><td>动量跟随</td><td>回踩低吸</td><td>回踩低吸</td><td>趋势延续</td></tr><tr><td style="font-weight:700">C</td><td>箱体低吸</td><td>箱体/回踩低吸</td><td>回踩低吸</td><td>回踩低吸</td></tr><tr><td style="font-weight:700">D</td><td>箱体高抛低吸</td><td>箱体高抛低吸</td><td>观望</td><td>观望</td></tr><tr><td style="font-weight:700">E</td><td>观望</td><td>观望</td><td>观望</td><td>观望</td></tr><tr><td style="font-weight:700">F</td><td>超跌反弹博弈</td><td>止跌确认观察</td><td>止跌确认观察</td><td>回避</td></tr><tr class="current"><td style="font-weight:700">G</td><td>回避</td><td>回避</td><td>回避</td><td>回避</td></tr><tr><td style="font-weight:700">H</td><td>首阴低吸</td><td>首阴低吸/趋势突破</td><td>趋势线突破</td><td>趋势线突破</td></tr></tbody></table><div style="font-size:11px;color:#8b949e;margin-top:6px">▶ 当前标签: <span class="label-g">强趋势空头</span> | 来源: SKILL.md TC4</div></div>
+<div class="card" style="margin-top:20px"><h3>🔀 日周共振面板</h3><div class="resonance-panel"><div class="res-col"><h4>📅 日线</h4><div class="res-row"><span>Close vs MA20</span><span class="val" style="color:#d9534f">30.53 &lt; 34.47</span></div><div class="res-row"><span>RSI14</span><span class="val" style="color:#d9534f">28.02</span></div><div class="res-row"><span>MACD柱</span><span class="val" style="color:#d9534f">-0.9475</span></div><div class="res-row"><span>趋势标签</span><span class="val label-g">强趋势空头</span></div></div><div class="res-col"><h4>📅 周线</h4><div class="res-row"><span>Close vs MA20</span><span class="val" style="color:#d9534f">30.53 < 36.09</span></div><div class="res-row"><span>RSI14</span><span class="val">33.32</span></div><div class="res-row"><span>MACD柱</span><span class="val" style="color:#d9534f">-0.7261</span></div><div class="res-row"><span>周线判定</span><span class="val">周线偏空</span></div></div></div></div>
+<div class="card" style="margin-top:20px"><h3>🚨 风险信号灯</h3><div class="risk-panel"><div class="risk-light"><div class="rl-icon">🟢</div><div class="rl-label">高管减持</div><div class="rl-status rl-safe">无异常</div></div><div class="risk-light"><div class="rl-icon">🟢</div><div class="rl-label">股权质押</div><div class="rl-status rl-safe">无异常</div></div><div class="risk-light"><div class="rl-icon">🟢</div><div class="rl-label">违规处罚</div><div class="rl-status rl-safe">无异常</div></div><div class="risk-light"><div class="rl-icon">🟡</div><div class="rl-label">负面舆情</div><div class="rl-status rl-warn">关注</div></div></div></div>
+<div class="card" style="margin-top:20px"><h3>📉 K线+均线 15日轨迹</h3><canvas id="chartTrajectory" style="max-height:300px"></canvas></div><div class="card" style="margin-top:20px"><h3>📊 四层评分演变</h3><canvas id="chartScoreEvolution" style="max-height:280px"></canvas></div><script>var trajData=[{"date": "2026-05-11", "close": 35.66, "ma5": 35.44, "ma10": 35.21, "ma20": 35.7, "rsi14": 51.19, "macd_hist": 0.0695, "dir_score": 0, "mom_score": 5, "stru_score": 5, "vol_score": 0, "total_score": 10}, {"date": "2026-05-12", "close": 35.35, "ma5": 35.59, "ma10": 35.25, "ma20": 35.75, "rsi14": 48.85, "macd_hist": 0.0453, "dir_score": 0, "mom_score": 5, "stru_score": 5, "vol_score": 0, "total_score": 10}, {"date": "2026-05-13", "close": 35.49, "ma5": 35.62, "ma10": 35.27, "ma20": 35.81, "rsi14": 49.96, "macd_hist": 0.0467, "dir_score": 0, "mom_score": 5, "stru_score": 0, "vol_score": 0, "total_score": 5}, {"date": "2026-05-14", "close": 34.61, "ma5": 35.43, "ma10": 35.21, "ma20": 35.65, "rsi14": 43.57, "macd_hist": -0.0661, "dir_score": 0, "mom_score": -10, "stru_score": 0, "vol_score": 0, "total_score": -10}, {"date": "2026-05-15", "close": 35.95, "ma5": 35.41, "ma10": 35.35, "ma20": 35.56, "rsi14": 53.36, "macd_hist": 0.0389, "dir_score": 30, "mom_score": 10, "stru_score": 0, "vol_score": 5, "total_score": 45}, {"date": "2026-05-18", "close": 35.45, "ma5": 35.37, "ma10": 35.41, "ma20": 35.51, "rsi14": 49.88, "macd_hist": 0.04, "dir_score": -40, "mom_score": 5, "stru_score": 0, "vol_score": 0, "total_score": -35}, {"date": "2026-05-19", "close": 35.74, "ma5": 35.45, "ma10": 35.52, "ma20": 35.46, "rsi14": 51.84, "macd_hist": 0.0766, "dir_score": 0, "mom_score": 5, "stru_score": 5, "vol_score": 0, "total_score": 10}, {"date": "2026-05-20", "close": 34.66, "ma5": 35.28, "ma10": 35.45, "ma20": 35.37, "rsi14": 44.81, "macd_hist": -0.0414, "dir_score": 0, "mom_score": -10, "stru_score": 0, "vol_score": -3, "total_score": -13}, {"date": "2026-05-22", "close": 34.59, "ma5": 35.0, "ma10": 35.2, "ma20": 35.21, "rsi14": 44.47, "macd_hist": -0.1666, "dir_score": -40, "mom_score": -10, "stru_score": -5, "vol_score": 0, "total_score": -55}, {"date": "2026-05-25", "close": 33.89, "ma5": 34.69, "ma10": 35.03, "ma20": 35.12, "rsi14": 40.16, "macd_hist": -0.2708, "dir_score": -40, "mom_score": -15, "stru_score": -5, "vol_score": 0, "total_score": -60}, {"date": "2026-05-26", "close": 32.97, "ma5": 34.13, "ma10": 34.79, "ma20": 35.02, "rsi14": 35.3, "macd_hist": -0.4371, "dir_score": -40, "mom_score": -25, "stru_score": -5, "vol_score": 0, "total_score": -70}, {"date": "2026-05-27", "close": 31.48, "ma5": 33.5, "ma10": 34.39, "ma20": 34.83, "rsi14": 29.16, "macd_hist": -0.7054, "dir_score": -40, "mom_score": -25, "stru_score": -5, "vol_score": 0, "total_score": -70}, {"date": "2026-05-28", "close": 31.95, "ma5": 32.98, "ma10": 34.12, "ma20": 34.67, "rsi14": 33.11, "macd_hist": -0.7717, "dir_score": -40, "mom_score": -25, "stru_score": -5, "vol_score": 0, "total_score": -70}, {"date": "2026-05-29", "close": 30.53, "ma5": 32.16, "ma10": 33.58, "ma20": 34.47, "rsi14": 28.02, "macd_hist": -0.9475, "dir_score": -40, "mom_score": -25, "stru_score": -5, "vol_score": 0, "total_score": -70}];if(document.getElementById("chartTrajectory")){new Chart(document.getElementById("chartTrajectory"),{type:"line",data:{labels:trajData.map(function(d){return d.date.slice(5)}),datasets:[{label:"Close",data:trajData.map(function(d){return d.close}),borderColor:"#f0f6fc",borderWidth:2,tension:0.1,pointRadius:3},{label:"MA5",data:trajData.map(function(d){return d.ma5}),borderColor:"#d9534f",borderWidth:1,tension:0.1,pointRadius:0},{label:"MA20",data:trajData.map(function(d){return d.ma20}),borderColor:"#3fb950",borderWidth:1,tension:0.1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#8b949e",font:{size:10}}}},scales:{x:{ticks:{color:"#484f58",font:{size:9}}},y:{ticks:{color:"#484f58",font:{size:9}}}}}})}if(document.getElementById("chartScoreEvolution")){new Chart(document.getElementById("chartScoreEvolution"),{type:"bar",data:{labels:trajData.map(function(d){return d.date.slice(5)}),datasets:[{label:"方向",data:trajData.map(function(d){return d.dir_score||0}),backgroundColor:"#58a6ff",stack:"score"},{label:"动量",data:trajData.map(function(d){return d.mom_score||0}),backgroundColor:"#3fb950",stack:"score"},{label:"结构",data:trajData.map(function(d){return d.stru_score||0}),backgroundColor:"#f0ad4e",stack:"score"},{label:"量价",data:trajData.map(function(d){return d.vol_score||0}),backgroundColor:"#d9534f",stack:"score"},{label:"总分",type:"line",data:trajData.map(function(d){return d.total_score||0}),borderColor:"#f0f6fc",borderWidth:2,pointRadius:2,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#8b949e",font:{size:10}}}},scales:{x:{stacked:true,ticks:{color:"#484f58",font:{size:9}}},y:{stacked:true,ticks:{color:"#484f58",font:{size:9}}}}}})}</script>
+</div>
+<div class="footer">
+<p>Quant Trend System V4.9 · Agent 8 · 基于 SKILL.md 单一权威源</p>
+<p style="margin-top:4px"><a href="report.html">📄 MD 报告查看器</a> · <a href="安乃达_20260529_quant_trend.md">📝 Markdown 原文</a> · <a href="https://github.com/zhiqunlin/quant-trend-reports">GitHub 仓库</a></p>
+<p style="margin-top:8px;color:#d9534f">⚠️ 不构成投资建议 · 市场有风险，投资须谨慎</p>
+</div>
+<script>
+// ===== Chart Data =====
+const chartData = {
+    layers: {
+        labels: ['方向分(40)', '动量分(30)', '结构分(20)', '量价分(10)'],
+        max: [40, 30, 20, 10],
+        actual: [-40, -25, -5, -5]
+    },
+    position: {
+        labels: ['超短', '短线', '波段', '中线'],
+        limits: [0.0, 0.0, 0.0, 0.0]
+    },
+    stopLoss: {
+        labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
+        values: [0, 0, 0, 0]
+    },
+    periodCompare: {
+        labels: ['超短(12%)', '短线(22%)', '波段(32%)', '中线(45%)'],
+        base: [12, 22, 32, 45],
+        actual: [0.0, 0.0, 0.0, 0.0]
+    }
+};
+
+// ===== Common Options =====
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#21262d';
+Chart.defaults.font.family = '"Microsoft YaHei","PingFang SC",sans-serif';
+
+// ===== 1. Five-Layer Score Chart (Horizontal Bar) =====
+new Chart(document.getElementById('chartLayers'), {
+    type: 'bar',
+    data: {
+        labels: chartData.layers.labels,
+        datasets: [
+            {
+                label: '满分',
+                data: chartData.layers.max,
+                backgroundColor: '#21262d',
+                borderColor: '#30363d',
+                borderWidth: 1,
+                barPercentage: 0.6
+            },
+            {
+                label: '实际得分',
+                data: chartData.layers.actual,
+                backgroundColor: ['#00d2ff','#3a7bd5','#f0ad4e','#3fb950'],
+                barPercentage: 0.6
+            }
+        ]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { max: 45, grid: { color: '#21262d' } },
+            y: { grid: { display: false } }
+        }
+    }
+});
+
+// ===== 2. Position Limits (Horizontal Bar) =====
+new Chart(document.getElementById('chartPosition'), {
+    type: 'bar',
+    data: {
+        labels: chartData.position.labels,
+        datasets: [{
+            label: '仓位上限',
+            data: chartData.position.limits,
+            backgroundColor: ['#3fb950','#3fb950','#f0ad4e','#d9534f'],
+            barPercentage: 0.5
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: ctx => ctx.raw + '%' } }
+        },
+        scales: {
+            x: { max: 50, grid: { color: '#21262d' }, ticks: { callback: v => v + '%' } },
+            y: { grid: { display: false } }
+        }
+    }
+});
+
+// ===== 3. Stop-Loss Radar =====
+new Chart(document.getElementById('chartStopLoss'), {
+    type: 'radar',
+    data: {
+        labels: chartData.stopLoss.labels,
+        datasets: [{
+            label: '止跌四维',
+            data: chartData.stopLoss.values,
+            backgroundColor: 'rgba(63,185,80,0.15)',
+            borderColor: '#3fb950',
+            borderWidth: 2,
+            pointBackgroundColor: chartData.stopLoss.values.map(v => v > 0 ? '#3fb950' : '#d9534f'),
+            pointRadius: 5
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            r: {
+                min: 0, max: 1,
+                grid: { color: '#21262d' },
+                angleLines: { color: '#21262d' },
+                pointLabels: { color: '#8b949e', font: { size: 11 } },
+                ticks: { display: false }
+            }
+        }
+    }
+});
+
+// ===== 4. Period Compare (Grouped Bar) =====
+new Chart(document.getElementById('chartPeriodCompare'), {
+    type: 'bar',
+    data: {
+        labels: chartData.periodCompare.labels,
+        datasets: [
+            {
+                label: '基础上限',
+                data: chartData.periodCompare.base,
+                backgroundColor: '#21262d',
+                borderColor: '#30363d',
+                borderWidth: 1
+            },
+            {
+                label: '实际上限',
+                data: chartData.periodCompare.actual,
+                backgroundColor: '#1f6feb',
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw + '%' } }
+        },
+        scales: {
+            y: { max: 50, grid: { color: '#21262d' }, ticks: { callback: v => v + '%' } },
+            x: { grid: { display: false } }
+        }
+    }
+});
+</script>
+</body>
+</html>
