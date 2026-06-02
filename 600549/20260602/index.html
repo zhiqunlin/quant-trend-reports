@@ -84,11 +84,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 <div class="kpi-row">
 <div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#888">20</div><div class="label">/100 · 震荡</div></div>
 <div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#3fb950">强</div><div class="label">3/4维满足</div></div>
-<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">4.48%</div><div class="label">空仓</div></div>
+<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">5.44%</div><div class="label">空仓</div></div>
 <div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">5.92%</div><div class="label">ATR14/Close</div></div>
 </div>
 
-<div class="warning-box">⚠️ 风险警示：四周期极端分歧(波段A vs 中线G);止跌强但趋势震荡矛盾;周线MACD空头主导 | 乖离率 D20：-3.5%</div>
+<div class="warning-box">⚠️ 风险警示：四周期极端分歧(波段A vs 中线G);止跌强但趋势震荡矛盾;1手超限不适合入场 | 乖离率 D20：-3.5%</div>
 
 <div class="grid-2">
 <div class="card">
@@ -150,7 +150,7 @@ const chartData = {
     },
     position: {
         labels: ['超短(1-3天)', '短线(3-5天)', '波段(5-10天)', '中线(10-15天)'],
-        limits: [1.68, 3.08, 4.48, 6.3]
+        limits: [2.04, 3.74, 5.44, 7.65]
     },
     stopLoss: {
         labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
@@ -159,7 +159,7 @@ const chartData = {
     periodCompare: {
         labels: ['超短(1-3天·12%)', '短线(3-5天·22%)', '波段(5-10天·32%)', '中线(10-15天·45%)'],
         base: [12, 22, 32, 45],
-        actual: [1.68, 3.08, 4.48, 6.3]
+        actual: [2.04, 3.74, 5.44, 7.65]
     }
 };
 
