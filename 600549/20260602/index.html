@@ -83,12 +83,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",s
 
 <div class="kpi-row">
 <div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#d9534f">15</div><div class="label">/100 · 偏空</div></div>
-<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#d2991d">中</div><div class="label">3/4维满足</div></div>
-<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">3.36%</div><div class="label">空仓</div></div>
+<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#3fb950">强</div><div class="label">3/4维满足</div></div>
+<div class="kpi"><div class="label">仓位上限</div><div class="value" style="color:#3fb950">27.9%</div><div class="label">空仓</div></div>
 <div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">5.81%</div><div class="label">ATR14/Close</div></div>
 </div>
 
-<div class="warning-box">⚠️ 风险警示：价线背离;四周期严重分歧;资金不足1手;MA20下行 | 乖离率 D20：2.09%</div>
+<div class="warning-box">⚠️ 风险警示：四周期分歧;MA20下行;模式未触发;保底规则触发 | 乖离率 D20：2.09%</div>
 
 <div class="grid-2">
 <div class="card">
@@ -152,7 +152,7 @@ const chartData = {
     },
     position: {
         labels: ['超短(1-3天)', '短线(3-5天)', '波段(5-10天)', '中线(10-15天)'],
-        limits: [1.26, 2.31, 3.36, 4.73]
+        limits: [27.9, 27.9, 27.9, 11.3]
     },
     stopLoss: {
         labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
@@ -161,7 +161,7 @@ const chartData = {
     periodCompare: {
         labels: ['超短(1-3天·12%)', '短线(3-5天·22%)', '波段(5-10天·32%)', '中线(10-15天·45%)'],
         base: [12, 22, 32, 45],
-        actual: [1.26, 2.31, 3.36, 4.73]
+        actual: [27.9, 27.9, 27.9, 11.3]
     }
 };
 
