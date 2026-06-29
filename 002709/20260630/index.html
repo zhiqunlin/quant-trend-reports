@@ -180,6 +180,8 @@ section{scroll-margin-top:60px;margin:32px 0}
 <div class="kpi-fund"><div class="label">20日累积</div><div class="value" style="color:#d9534f">-2.32亿</div><div class="label">主力净流入</div></div>
 <div class="kpi-fund"><div class="label">60日累积</div><div class="value" style="color:#3fb950">7.23亿</div><div class="label">中线累计</div></div>
 </div>
+<div class="card" style="margin-top:20px"><h3>💰 近15日资金流向趋势</h3><canvas id="chartFundFlow" style="max-height:300px;"></canvas></div>
+<div class="card" style="margin-top:20px"><h3>📊 主力资金 vs 全市场主动买卖趋势</h3><canvas id="chartMainFlow" style="max-height:300px;"></canvas></div>
 <div class="card" style="margin-top:20px"><h3>📈 MA趋势分析</h3><canvas id="chartMATrend" style="max-height:280px;"></canvas></div>
 <div class="card" style="margin-top:20px">
 <h3>📊 多周期累积流向对比</h3>
@@ -426,11 +428,13 @@ new Chart(document.getElementById('chartPeriodCompare'), {
         }] : []
     }
 });
+new Chart(document.getElementById("chartFundFlow"),{type:"bar",data:{labels:["0605", "0608", "0609", "0610", "0611", "0612", "0615", "0616", "0617", "0618", "0622", "0623", "0624", "0625", "0626"],datasets:[{label:"超大单(亿)",data:[-0.48982700000000007, 0.444792, 0.9951049999999999, 0.41447, 2.336098, -0.11491199999999999, -3.8110129999999995, 0.161277, -1.6616119999999999, -1.529561, -1.08128, -0.8289059999999999, 0.7303470000000001, 2.262122, -0.19911800000000002],backgroundColor:"rgba(239,68,68,0.7)"},{label:"大单(亿)",data:[-0.1431, -0.109329, 0.284401, 0.065478, 0.888962, -0.657289, 0.369184, -0.092838, -0.339957, -0.424516, -0.14138, -0.8190390000000001, 0.25528, 0.435742, -0.268902],backgroundColor:"rgba(59,130,246,0.7)"},{label:"主力合计",data:[-0.632927, 0.335462, 1.279505, 0.479947, 3.22506, -0.772201, -3.4418290000000002, 0.068439, -2.001569, -1.954077, -1.222661, -1.647946, 0.985627, 2.697864, -0.46802],type:"line",borderColor:"#f59e0b",borderWidth:2.5,pointRadius:3,tension:0.3,fill:false}]},options:{responsive:true,plugins:{legend:{labels:{color:"#94a3b8"}}},scales:{x:{ticks:{color:"#94a3b8"}},y:{ticks:{color:"#94a3b8"}}}}});
+new Chart(document.getElementById("chartMainFlow"),{type:"line",data:{labels:["0605", "0608", "0609", "0610", "0611", "0612", "0615", "0616", "0617", "0618", "0622", "0623", "0624", "0625", "0626"],datasets:[{label:"主力净流入(亿)",data:[-0.632927, 0.335462, 1.279505, 0.479947, 3.22506, -0.772201, -3.4418290000000002, 0.068439, -2.001569, -1.954077, -1.222661, -1.647946, 0.985627, 2.697864, -0.46802],borderColor:"#ef4444",borderWidth:2.5,pointRadius:3,tension:0.3},{label:"全市场主动净额(亿)",data:[-0.7894760000000001, 0.02105, 1.162269, 0.401704, 3.7479449999999996, -1.074272, -3.2622150000000003, 0.177547, -1.9651560000000001, -2.014318, -1.268475, -1.806216, 0.913866, 2.7681709999999997, -0.46358999999999995],borderColor:"#3b82f6",borderWidth:2.5,pointRadius:3,tension:0.3}]},options:{responsive:true,plugins:{legend:{labels:{color:"#94a3b8"}}},scales:{x:{ticks:{color:"#94a3b8"}},y:{ticks:{color:"#94a3b8"}}}}});
 
 new Chart(document.getElementById("chartMATrend"), {
   type: "line",
   data: {
-    labels: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+    labels: ["0605", "0608", "0609", "0610", "0611", "0612", "0615", "0616", "0617", "0618", "0622", "0623", "0624", "0625", "0626"],
     datasets: [
       {label: "MA5(亿)", data: [0.16, 0.23, 0.29, 0.41, 0.94, 0.91, 0.15, -0.09, -0.58, -1.62, -1.71, -1.35, -1.17, -0.23, 0.07], borderColor: "#3fb950", borderWidth: 2, tension: 0.3, pointRadius: 0},
       {label: "MA10(亿)", data: [0.17, 0.22, 0.33, 0.39, 0.54, 0.53, 0.19, 0.1, -0.09, -0.34, -0.4, -0.6, -0.63, -0.41, -0.78], borderColor: "#f59e0b", borderWidth: 2, tension: 0.3, pointRadius: 0},
