@@ -115,13 +115,13 @@ section{scroll-margin-top:60px;margin:32px 0}
 <div class="card-risk" style="background:#1e293b;border-left:4px solid #3fb950;padding:15px;margin-top:20px;border-radius:8px;">
 <h3 style="color:#3fb950;margin-bottom:12px;">🛡️ 实战风控推演 (8% 风险预算)</h3>
 <div style="position:relative;height:10px;background:#21262d;border-radius:5px;margin-bottom:12px;">
-  <div style="position:absolute;width:13.3%;height:100%;background:#3fb950;opacity:0.4;border-radius:5px 0 0 5px;" title="评分允许 13.3%"></div>
+  <div style="position:absolute;width:6.0%;height:100%;background:#3fb950;opacity:0.4;border-radius:5px 0 0 5px;" title="评分允许 6.0%"></div>
   <div style="position:absolute;width:64.3%;height:100%;background:#f59e0b;opacity:0.6;border-radius:5px 0 0 5px;" title="风险允许 64.3%"></div>
-  <div style="position:absolute;left:13.3%;width:2px;height:14px;top:-2px;background:#fff;" title="最终仓位 13.3%"></div>
+  <div style="position:absolute;left:6.0%;width:2px;height:14px;top:-2px;background:#fff;" title="最终仓位 6.0%"></div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;color:#8b949e;font-size:13px;">
-  <div><span style="color:#8b949e;">建议仓位</span><br><strong style="font-size:22px;color:#f0f6fc;">13.3%</strong><br><span style="font-size:11px;">评分主导仓位</span></div>
-  <div><span style="color:#8b949e;">建议股数</span><br><strong style="font-size:22px;color:#f0f6fc;">200 股</strong></div>
+  <div><span style="color:#8b949e;">建议仓位</span><br><strong style="font-size:22px;color:#f0f6fc;">6.0%</strong><br><span style="font-size:11px;">评分主导仓位</span></div>
+  <div><span style="color:#8b949e;">建议股数</span><br><strong style="font-size:22px;color:#f0f6fc;">100 股</strong></div>
   <div><span style="color:#d9534f;">止损防线</span><br><strong style="color:#d9534f;">44.58 元</strong></div>
   <div><span style="color:#8b949e;">最大亏损锁死</span><br><strong style="color:#f0f6fc;">8,002 元</strong></div>
 </div>
@@ -173,12 +173,12 @@ section{scroll-margin-top:60px;margin:32px 0}
 
 <!-- QuantTrend+ 资金图表（动态注入）-->
 <div class="kpi-row-fund">
-<div class="kpi-fund"><div class="label">资金评分</div><div class="value" style="color:#f59e0b">2.8</div><div class="label">/100</div></div>
-<div class="kpi-fund"><div class="label">MA5斜率</div><div class="value" style="color:#3fb950">+4682 ↑</div><div class="label">上升</div></div>
-<div class="kpi-fund"><div class="label">MA金叉/死叉</div><div class="value" style="color:#3fb950">金叉</div><div class="label">弱 · 多头排列</div></div>
-<div class="kpi-fund"><div class="label">MA10斜率</div><div class="value" style="color:#d9534f">-558 ↓</div><div class="label">下降</div></div>
-<div class="kpi-fund"><div class="label">20日累积</div><div class="value" style="color:#d9534f">-2.32亿</div><div class="label">主力净流入</div></div>
-<div class="kpi-fund"><div class="label">60日累积</div><div class="value" style="color:#3fb950">7.23亿</div><div class="label">中线累计</div></div>
+<div class="kpi-fund"><div class="label">资金评分</div><div class="value" style="color:#f59e0b">-2.7</div><div class="label">/100</div></div>
+<div class="kpi-fund"><div class="label">MA5斜率</div><div class="value" style="color:#d9534f">-14973 ↓</div><div class="label">下降</div></div>
+<div class="kpi-fund"><div class="label">MA金叉/死叉</div><div class="value" style="color:#d9534f">死叉</div><div class="label">强 · 空头排列</div></div>
+<div class="kpi-fund"><div class="label">MA10斜率</div><div class="value" style="color:#d9534f">-6089 ↓</div><div class="label">下降</div></div>
+<div class="kpi-fund"><div class="label">20日累积</div><div class="value" style="color:#d9534f">-30.37亿</div><div class="label">主力净流入</div></div>
+<div class="kpi-fund"><div class="label">60日累积</div><div class="value" style="color:#d9534f">-58.56亿</div><div class="label">中线累计</div></div>
 </div>
 <div class="card" style="margin-top:20px"><h3>💰 近15日资金流向趋势</h3><canvas id="chartFundFlow" style="max-height:300px;"></canvas></div>
 <div class="card" style="margin-top:20px"><h3>📊 主力资金 vs 全市场主动买卖趋势</h3><canvas id="chartMainFlow" style="max-height:300px;"></canvas></div>
@@ -186,7 +186,7 @@ section{scroll-margin-top:60px;margin:32px 0}
 <div class="card" style="margin-top:20px">
 <h3>📊 多周期累积流向对比</h3>
 <table class="stop-table" style="margin-top:8px"><thead><tr><th>周期</th><th>窗口</th><th>累积主力净流入</th></tr></thead>
-<tbody><tr><td>🔴短线</td><td><strong>5日</strong></td><td style="color:#3fb950">+0.34亿</td></tr><tr><td>🟡中短</td><td><strong>10日</strong></td><td style="color:#d9534f">-7.76亿</td></tr><tr><td>🟢中线</td><td><strong>20日</strong></td><td style="color:#d9534f">-2.32亿</td></tr><tr><td>🔵长线</td><td><strong>60日</strong></td><td style="color:#3fb950">+7.23亿</td></tr></tbody></table>
+<tbody><tr><td>🔴短线</td><td><strong>5日</strong></td><td style="color:#d9534f">-26.80亿</td></tr><tr><td>🟡中短</td><td><strong>10日</strong></td><td style="color:#d9534f">-21.89亿</td></tr><tr><td>🟢中线</td><td><strong>20日</strong></td><td style="color:#d9534f">-30.37亿</td></tr><tr><td>🔵长线</td><td><strong>60日</strong></td><td style="color:#d9534f">-58.56亿</td></tr></tbody></table>
 <div style="font-size:11px;color:#8b949e;margin-top:6px;">💡 正值=主力净买入，负值=主力净卖出。短线(5日)关注趋势转折，中线(20日+60日)关注资金大方向。</div>
 </div>
 <div class="card" style="margin-top:20px;border-left:3px solid #f59e0b;">
@@ -229,15 +229,15 @@ section{scroll-margin-top:60px;margin:32px 0}
 <div style="margin-top:10px;font-size:0.85rem;line-height:1.8;">
 <span style="color:var(--text-muted);">骗线排查：</span><span style="color:var(--text-muted);">无</span><br>
 <span style="color:var(--text-muted);">硬过滤器：</span><span style="color:var(--text-muted);">未触发</span><br>
-<span style="color:var(--text-muted);">综合评级：</span><strong style="color:var(--green);">D</strong>（13.3/100）
+<span style="color:var(--text-muted);">综合评级：</span><strong style="color:var(--green);">D</strong>（6.0/100）
 </div></div>
 <div class="card" style="margin-top:20px;">
 <h3>📊 资技共振分析</h3>
-<table class="stop-table"><thead><tr><th>周期</th><th>技术标签</th><th>资金标签</th><th>状态</th></tr></thead><tbody><tr><td>中线</td><td style="font-weight:600;">G(超跌反弹)</td><td style="font-weight:600;">S(极强(>8%))</td><td>⚪ 中性</td></tr><tr><td>波段</td><td style="font-weight:600;">C(震荡偏多)</td><td style="font-weight:600;">C(弱(-4~0))</td><td>⚪ 中性</td></tr><tr><td>短线</td><td style="font-weight:600;">F(强趋势空头)</td><td style="font-weight:600;">C(弱(-4~0))</td><td>🟢 共振偏空</td></tr><tr><td>超短</td><td style="font-weight:600;">G(超跌反弹)</td><td style="font-weight:600;">B(偏多(0-4%))</td><td>⚪ 中性</td></tr></tbody></table>
-<div style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">整体共振状态：强背离 | 综合评级：<strong>D</strong></div></div>
+<table class="stop-table"><thead><tr><th>周期</th><th>技术标签</th><th>资金标签</th><th>状态</th></tr></thead><tbody><tr><td>中线</td><td style="font-weight:600;">G(超跌反弹)</td><td style="font-weight:600;">D(极弱(<-4%))</td><td>🟢 共振偏空</td></tr><tr><td>波段</td><td style="font-weight:600;">C(震荡偏多)</td><td style="font-weight:600;">C(弱(-4~0))</td><td>⚪ 中性</td></tr><tr><td>短线</td><td style="font-weight:600;">F(强趋势空头)</td><td style="font-weight:600;">C(弱(-4~0))</td><td>🟢 共振偏空</td></tr><tr><td>超短</td><td style="font-weight:600;">G(超跌反弹)</td><td style="font-weight:600;">C(弱(-4~0))</td><td>🟢 共振偏空</td></tr></tbody></table>
+<div style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">整体共振状态：强共振偏空 | 综合评级：<strong>D</strong></div></div>
 <div class="card" style="margin-top:20px;"><h3>📈 多空力量对比矩阵</h3><table class="stop-table"><thead><tr><th>维度</th><th>多头</th><th>空头</th><th>倾向</th></tr></thead><tbody><tr><td>超大单流向</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>大单流向</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>融资盘</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>融券盘</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>机构持仓</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>资金-价格背离</td><td>—</td><td>—</td><td>⚪</td></tr><tr><td>暗盘信号</td><td>—</td><td>—</td><td>⚪</td></tr></tbody></table><div style="margin-top:8px;font-size:0.85rem;color:var(--text-muted);">多头0项 | 空头0项 | 净倾向:neutral</div></div>
-<div class="card" style="margin-top:20px;border:2px solid var(--gold);"><h3>🎯 资金综合研判</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;"><div><h4 style="color:var(--red);">✅ 多头证据</h4><ul style="color:var(--text-muted);"><li>✅ 资金MA趋势: 短期金叉(趋势转强)</li></ul></div><div><h4 style="color:var(--gold);">⚠️ 空头证据</h4><ul style="color:var(--text-muted);"></ul></div></div><div style="padding:12px;background:rgba(59,130,246,0.1);border-radius:8px;margin-top:12px;"><strong>💡 操作建议：</strong><span style="color:var(--text-muted);">资金信号多空交织，等待更明确信号</span></div></div>
-<div class="card" style="margin-top:0;padding:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);"><span style="font-size:0.75rem;color:var(--text-muted);">💰 资金增强</span><span style="margin-left:12px;font-weight:700;color:var(--green);">评级 D</span><span style="margin-left:12px;color:var(--text-muted);">共振 强背离</span><span style="margin-left:12px;color:var(--text-muted);">评分 13.3</span></div>
+<div class="card" style="margin-top:20px;border:2px solid var(--gold);"><h3>🎯 资金综合研判</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;"><div><h4 style="color:var(--red);">✅ 多头证据</h4><ul style="color:var(--text-muted);"></ul></div><div><h4 style="color:var(--gold);">⚠️ 空头证据</h4><ul style="color:var(--text-muted);"><li>⚠️ 资金MA趋势: 短期死叉(趋势转弱)</li></ul></div></div><div style="padding:12px;background:rgba(59,130,246,0.1);border-radius:8px;margin-top:12px;"><strong>💡 操作建议：</strong><span style="color:var(--text-muted);">资金信号多空交织，等待更明确信号</span></div></div>
+<div class="card" style="margin-top:0;padding:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);"><span style="font-size:0.75rem;color:var(--text-muted);">💰 资金增强</span><span style="margin-left:12px;font-weight:700;color:var(--green);">评级 D</span><span style="margin-left:12px;color:var(--text-muted);">共振 强共振偏空</span><span style="margin-left:12px;color:var(--text-muted);">评分 6.0</span></div>
 
 
 </div>
@@ -436,9 +436,9 @@ new Chart(document.getElementById("chartMATrend"), {
   data: {
     labels: ["0605", "0608", "0609", "0610", "0611", "0612", "0615", "0616", "0617", "0618", "0622", "0623", "0624", "0625", "0626"],
     datasets: [
-      {label: "MA5(亿)", data: [0.16, 0.23, 0.29, 0.41, 0.94, 0.91, 0.15, -0.09, -0.58, -1.62, -1.71, -1.35, -1.17, -0.23, 0.07], borderColor: "#3fb950", borderWidth: 2, tension: 0.3, pointRadius: 0},
-      {label: "MA10(亿)", data: [0.17, 0.22, 0.33, 0.39, 0.54, 0.53, 0.19, 0.1, -0.09, -0.34, -0.4, -0.6, -0.63, -0.41, -0.78], borderColor: "#f59e0b", borderWidth: 2, tension: 0.3, pointRadius: 0},
-      {label: "MA20(亿)", data: [0.19, 0.19, 0.23, 0.17, 0.35, 0.29, 0.12, 0.08, 0.01, -0.06, -0.11, -0.19, -0.15, -0.01, -0.12], borderColor: "#58a6ff", borderWidth: 2, tension: 0.3, pointRadius: 0},
+      {label: "MA5(亿)", data: [-1.87, -1.06, -0.67, 0.08, 0.64, -1.21, -0.26, -0.22, -1.85, 0.98, 1.13, 0.31, -0.79, -1.68, -5.36], borderColor: "#3fb950", borderWidth: 2, tension: 0.3, pointRadius: 0},
+      {label: "MA10(亿)", data: [-1.49, -1.1, -1.51, -1.02, -0.85, -1.54, -0.66, -0.44, -0.89, 0.81, -0.04, 0.03, -0.5, -1.76, -2.19], borderColor: "#f59e0b", borderWidth: 2, tension: 0.3, pointRadius: 0},
+      {label: "MA20(亿)", data: [-2.33, -1.78, -1.58, -1.06, -1.51, -1.88, -1.31, -1.79, -2.14, -1.28, -0.77, -0.54, -1.01, -1.39, -1.52], borderColor: "#58a6ff", borderWidth: 2, tension: 0.3, pointRadius: 0},
     ]
   },
   options: {
@@ -449,11 +449,11 @@ new Chart(document.getElementById("chartMATrend"), {
         annotations: {
           goldenCross: {
             type: "label",
-            xValue: 13,
-            yValue: 0.07,
-            content: "金叉",
-            backgroundColor: "#3fb95033",
-            color: "#3fb950",
+            xValue: 14,
+            yValue: -5.36,
+            content: "死叉",
+            backgroundColor: "#d9534f33",
+            color: "#d9534f",
             font: {size: 12, weight: "bold"},
           }
         }
